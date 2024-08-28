@@ -1,0 +1,28 @@
+version: "1"
+
+package:
+  id: io.github.Numpyviewer
+  name: Numpyviewer
+  version: 0.0.6.1
+  kind: app
+  description: |
+    Viewer for hyperspectral Numpy cubes and (2d/3d/4d)-tensors. (GPLv2)
+
+command:
+  - /opt/apps/io.github.Numpyviewer/files/bin/numpyviewer
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/ArendJanKramer/Numpyviewer.git
+    version: master
+    commit: 906bcfb1560fff4e8d0a90e1520aac5ea46990c5
+
+build: |
+  cd /project/linglong/sources/Numpyviewer.git
+  git apply ../../../0001-install.patch
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
