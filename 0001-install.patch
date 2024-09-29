@@ -1,0 +1,31 @@
+From 007bc18b20438320dde903926968884f85620488 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Fri, 16 Aug 2024 15:35:49 +0800
+Subject: [PATCH] install
+
+---
+ numpyviewer.pro | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/numpyviewer.pro b/numpyviewer.pro
+index 928d048..7c7f06d 100644
+--- a/numpyviewer.pro
++++ b/numpyviewer.pro
+@@ -81,5 +81,11 @@ INCLUDEPATH += $$[QT_INSTALL_HEADERS]/QtZlib
+ 
+ RC_FILE = appicon.rc
+ 
+-target.path = /usr/local/bin/
+-INSTALLS += target
++
++target.path = $$PREFIX/bin
++desktop.files = snap/gui/numpyviewer.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = snap/gui/numpyviewer.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
